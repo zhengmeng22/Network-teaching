@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" th:src="@{/js/jquery-1.12.4.min.1.js}"></script>
+		<link rel="stylesheet" th:href="@{/layui-v2.4.5/layui/css/layui.css}" />
+		<script th:src="@{/layui-v2.4.5/layui/layui.all.js}"></script>
+ 		<script th:src="@{/layui-v2.4.5/layui/layui.js}"></script>
+ 		
+ 		<script type="text/javascript" th:inline="none">
+ 		layui.use(['table','layer','element','util'], function(){
+ 		 		  var table = layui.table,
+ 		 			  layer = layui.layer,
+ 		 			  util = layui.util,
+ 		 			  element = layui.element;
+ 		 		  table.render({
+ 		 		    elem: '#tbooks'
+ 		 		    ,url:'tbookinfo'
+ 		 		    ,cols: [[
+ 		 		     {field:'book_id', title: '宝典ID',}
+ 		 		      ,{field:'user_login_name', title: '管理员'}
+ 		 		      ,{field:'book_question',title:'问题'}
+ 		 		      ,{field:'labels_name', title: '问题类别'}
+ 		 		      ,{field:'book_Release_time', title: '发布时间',templet:function(d){return util.toDateString(d.book_Release_time, "yyyy-MM-dd HH:mm:ss");}}
+ 		 		      ,{fixed: 'right',title:'操作', width: 165, align:'center', toolbar: '#barDemo'}
+ 		 		    ]]
+ 		 		    ,parseData: function(res){ //将原始数据解析成 table 组件所规定的数据
+ 		 		      return {
+ 		 		        "code": 0, //解析接口状态
+ 		 		        "msg": "", //解析提示文本
+ 		 		         //解析数据长度
+ 		 		        "data": res //解析数据列表
+ 		 		      };
+ 		 		    }
+
+ 		 		  });
+ 		 		table.on('tool(trea)',function(obj){
+ 		 			var data = obj.data //获得当前行数据
+ 				    ,layEvent = obj.event;//获取event的值
+ 				    if(layEvent === 'del'){
+ 				    	layer.confirm('真的要删除么',function(index){
+ 				    		$.post("deltreasure",{"id":data.book_id},function(date){
+ 	 				    			if(date==1){
+ 	 				    				obj.del();
+ 	 			                       //关闭弹框
+ 	 			                        layer.close(index);
+ 	 			                        layer.msg("删除成功", {icon: 6});
+ 	 				    			}else{
+ 	 				    				layer.msg("删除失败", {icon: 5});
+ 	 				    			}
+ 	 				    		})
+ 				    		
+ 				    	})
+ 				    }
+ 		 		  });
+ 		 		});
+ 		
+ 		</script>
+		
+ 	
+	</head> 
+	<body>
+		<div>
+			<table id="tbooks" lay-filter="trea">
+				
+			</table>
+		</div>
+		<script type="text/html" id="barDemo">
+   			
+  			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del" >删除</a>
+		</script>
+		
+	</body>
+</html>
+
+
+

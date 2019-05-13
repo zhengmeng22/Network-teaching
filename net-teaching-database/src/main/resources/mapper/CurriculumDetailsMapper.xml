@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zm.net.teaching.mapper.CurriculumDetailsMapper">
+  <resultMap id="BaseResultMap" type="com.zm.net.teaching.domain.CurriculumDetails">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="curriculum_details_id" jdbcType="INTEGER" property="curriculumDetailsId" />
+    <result column="curriculum_details_name" jdbcType="VARCHAR" property="curriculumDetailsName" />
+    <result column="curriculum_details_playback" jdbcType="VARCHAR" property="curriculumDetailsPlayback" />
+    <result column="curriculum_details_time" jdbcType="TIMESTAMP" property="curriculumDetailsTime" />
+    <result column="curriculum_details_stytem_id" jdbcType="INTEGER" property="curriculumDetailsStytemId" />
+  </resultMap>
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zm.net.teaching.mapper.UserLoginMapper">
+  <resultMap id="BaseResultMap" type="com.zm.net.teaching.domain.UserLogin">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="user_login_id" jdbcType="INTEGER" property="userLoginId" />
+    <result column="user_login_name" jdbcType="VARCHAR" property="userLoginName" />
+    <result column="user_login_pwd" jdbcType="VARCHAR" property="userLoginPwd" />
+    <result column="personnel_type_id" jdbcType="INTEGER" property="personnelTypeId" />
+    <result column="email_id" jdbcType="INTEGER" property="emailId" />
+    <result column="uuid" jdbcType="VARCHAR" property="uuid" />
+  </resultMap>
+</mapper>

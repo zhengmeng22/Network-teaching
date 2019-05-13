@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zm.net.teaching.mapper.CourseLearningRecordsMapper">
+  <resultMap id="BaseResultMap" type="com.zm.net.teaching.domain.CourseLearningRecords">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="Course_Learning_Records_id" jdbcType="INTEGER" property="courseLearningRecordsId" />
+    <result column="Course_Learning_Records_details_id" jdbcType="INTEGER" property="courseLearningRecordsDetailsId" />
+    <result column="Course_Learning_Records_playback" jdbcType="VARCHAR" property="courseLearningRecordsPlayback" />
+  </resultMap>
+</mapper>

@@ -1,0 +1,186 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>课程详情</title>
+		<link rel="stylesheet" href="layui-v2.4.5/layui/css/layui.css" />
+		<link rel="stylesheet" href="css/coursedetails.css" />
+		<link rel="stylesheet" href="css/home.css" />
+		<script src="layui-v2.4.5/layui/layui.all.js"></script>
+		<script src="js/jquery-1.12.4.min.1.js"></script>
+		<script>
+		</script>
+	</head>
+	<body>
+		<ul class="layui-nav layui-bg-green" id="layerDemo" lay-filter="">
+			<li class="layui-nav-item"><a href="#"><img src="img/logo.png" /></a></li>
+			<li class="layui-nav-item"><a href=""></a></li>
+			<li class="layui-nav-item"><a href="/home">首页</a></li>
+			<li class="layui-nav-item"><a href="/curr">课程</a></li>
+			<li class="layui-nav-item"><a href="">会员</a></li>
+			<li class="layui-nav-item"><a href="javascript:;">路线</a></li>
+			<li class="layui-nav-item"><a href="/qtTreasureBookinfos">面试宝典</a></li>
+			<li class="layui-nav-item"><a href=""></a></li>
+			<li class="layui-nav-item"><a href=""></a></li>
+			<li class="layui-nav-item"><a href=""></a></li>
+			<li class="layui-nav-item"><a href=""></a></li>
+			<li class="layui-nav-item"><a href=""></a></li>
+			<li class="layui-nav-item"><button data-method="notice" class="layui-btn" style="">登录</button></li>
+			<li class="layui-nav-item"><button data-method="register" class="layui-btn" style="">注册</button></li>
+		</ul>
+		<div id="card1">
+			<div class="layui-card" th:each="culum:${culum}">
+		        <div class="layui-card-header"><h2>课程介绍</h2></div>
+		        <div class="layui-card-body" id="cardbody">
+				    <div id="cardleft">
+				    	<img th:src="'/img/'+${culum['curriculum_img']}" width="550px" height="350px" />
+				    </div>
+				    <div id="cardright">
+				    	<table>
+				    		<tr>
+				    			<td colspan="2"><h1 th:text="${culum['curriculum_name']}"></h1></td>
+				    		</tr>
+				    		<tr>
+				    			<td><i class="layui-icon layui-icon-read"></i>课时数 1</td>
+				    			<td th:text="'浏览量'+${culum['curriculum_browse']}"><i class="layui-icon layui-icon-rate-solid"></i></td>
+				    		</tr>
+				    		<tr>
+				    			<td colspan="2">
+				    				<fieldset class="layui-elem-field layui-field-title" style="margin-top:10px;width: 400px;">
+									</fieldset>
+				    			</td>
+				    		</tr>
+				    		<tr>
+				    			<td>
+				    				<h3 th:text="'主讲:'+${culum['user_name']}"></h3>
+				    			</td>
+				    		</tr>
+				    		<tr>
+				    			<td>
+				    				&nbsp;
+				    			</td>
+				    		</tr>
+				    		<tr>
+				    			<td>
+				    				<h3>课程有效期:永久有效</h3>
+									<div id="email" style="padding: 20px 100px;display: none" th:text = "${culum['user_Email']}"></div>
+				    			</td>
+				    		</tr>
+				    		<tr>
+				    			<td>
+				    				&nbsp;
+				    			</td>
+				    		</tr>
+				    		<tr>
+				    			<td>
+				    				<h3 th:if="${culum['curriculum_member_id'] eq 2}" th:text="类别+':'+免费"></h3>
+									<h3 th:if="${culum['curriculum_member_id'] eq 1}" th:text="类别+':'+会员"></h3>
+				    			</td>
+				    		</tr>
+				    		<tr>
+				    			<td>
+				    				&nbsp;
+				    			</td>
+				    		</tr>
+				    		<tr>
+				    			<td>
+				    				<i class="layui-icon layui-icon-star"></i><a>收藏</a>
+				    			</td>
+				    		</tr>
+				    		<tr>
+				    			<td>
+				    				&nbsp;
+				    			</td>
+				    		</tr>
+				    		<tr>
+				    			<td>
+				    				&nbsp;
+				    			</td>
+				    		</tr>
+				    		<tr>
+				    			<td>
+				    				<div class="site-demo-button" id="layerDemo" style="margin-bottom: 0px;">
+										<button class="layui-btn layui-btn-normal" data-type="auto" data-method="offset">联系讲师</button>
+				    				</div>
+				    			</td>
+				    		</tr>
+				    	</table>
+				    </div>
+				</div>
+      		</div>
+			
+		</div>
+		<div class="layui-tab layui-tab-brief" id="divbuttom" lay-filter="docDemoTabBrief">
+			  <ul class="layui-tab-title">
+			    <li class="layui-this">课程目录</li>
+			    <li>课程介绍</li>
+			    <li>评价</li>
+			    
+			  </ul>
+			  <div class="layui-tab-content" style="height: 100px;">
+			    <div class="layui-tab-item layui-show">
+			    	<div class="layui-collapse" lay-filter="test">
+					  <div class="layui-colla-item">
+					    <h2 class="layui-colla-title">第一章 聚合支付平台简单介绍</h2>
+					    <div class="layui-colla-content">
+					      <i class="layui-icon layui-icon-video"></i> 第一节-构建聚合支付平台项目说明
+					 	</div>
+  				</div>
+
+			    </div>
+			    <div class="layui-tab-item">内容2</div>
+			    <div class="layui-tab-item">内容3</div>
+  		</div>
+	</div>
+	<div class="layui-card" id="card2">
+	        <div class="layui-card-header"><i class="layui-icon layui-icon-username" style="font-size: 20px;"></i><span id="span1">主讲讲师</span></div>
+	        <div class="layui-card-body">
+	         	<h3>田瑞丰</h3>
+	        </div>
+    </div>
+
+
+		</div>
+	</body>
+</html>
+<script src="layui-v2.4.5/layui/layui.js" charset="utf-8"></script>
+<script>
+    layui.use('layer', function(){ //独立版的layer无需执行这一句
+        var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+
+        //触发事件
+        var active = {
+            offset: function(othis){
+                var type = othis.data('type')
+                    ,text = othis.text();
+                layer.open({
+                    type: 1
+                    ,offset: type //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+                    ,id: 'layerDemo'+type //防止重复弹出
+                    ,content:  $('#email')
+                    ,btn: '关闭全部'
+                    ,btnAlign: 'c' //按钮居中
+                    ,shade: 0 //不显示遮罩
+                    ,yes: function(){
+                        layer.closeAll();
+                    }
+                });
+            }
+        };
+
+        $('#layerDemo .layui-btn').on('click', function(){
+            var othis = $(this), method = othis.data('method');
+            active[method] ? active[method].call(this, othis) : '';
+        });
+
+    });
+    layui.use(['element', 'layer'], function(){
+        var element = layui.element;
+        var layer = layui.layer;
+
+        //监听折叠
+        element.on('collapse(test)', function(data){
+            layer.msg('展开状态：'+ data.show);
+        });
+    });
+</script>

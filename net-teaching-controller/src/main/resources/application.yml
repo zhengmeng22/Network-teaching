@@ -1,0 +1,35 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    druid:
+      url: jdbc:mysql://localhost:3306/education?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+      username: root
+      password: root
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      test-on-borrow: true
+      # MySQL 8.x: com.mysql.cj.jdbc.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+  thymeleaf:
+    cache: false # 开发时关闭缓存,不然没法看到实时页面
+    mode: HTML # 用非严格的 HTML
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+  mail:
+    host: smtp.qq.com
+    username: 2277839631@qq.com
+    password: vvntldmkjatkeaii
+    default-encoding: utf-8
+
+logging:
+  file: logs/log.log
+mybatis:
+  type-aliases-package: com.zm.net.teaching.domain
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+      map-underscore-to-camel-case: true

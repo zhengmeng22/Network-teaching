@@ -1,0 +1,247 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<title>课程</title>
+		<link rel="stylesheet" href="layui-v2.4.5/layui/css/layui.css" />
+		<link rel="stylesheet" href="css/home.css" />
+		<link rel="stylesheet" href="css/currlculum.css" />
+		<script src="layui-v2.4.5/layui/layui.all.js"></script>
+		<script src="js/jquery-1.12.4.min.1.js"></script>
+		<script>
+			$(function(){
+				$(".lable").mouseover(function(){
+					$(this).css("background-color","#FF6633");
+					$(this).css("color","#FDFEFE");
+				});
+				$(".lable").mouseout(function(){
+					$(this).css("background-color","#FDFEFE");
+					$(this).css("color","black");
+				});
+			})
+		</script>
+		
+
+	</head>
+	<body>
+		<ul class="layui-nav layui-bg-green" id="layerDemo" lay-filter="">
+			<li class="layui-nav-item"><a href="#"><img src="img/logo.png" /></a></li>
+			<li class="layui-nav-item"><a href=""></a></li>
+			<li class="layui-nav-item"><a href="/home">首页</a></li>
+			<li class="layui-nav-item" ><a href="/curr">课程</a></li>
+			<li class="layui-nav-item"><a href="">会员</a></li>
+			<li class="layui-nav-item"><a href="javascript:;">路线</a></li>
+			<li class="layui-nav-item"><a href="/qtTreasureBookinfos">面试宝典</a></li>
+			<li class="layui-nav-item"><a href=""></a></li>
+			<li class="layui-nav-item"><a href=""></a></li>
+			<li class="layui-nav-item"><a href=""></a></li>
+			<li class="layui-nav-item"><a href=""></a></li>
+			<li class="layui-nav-item"><a href=""></a></li>
+			<li class="layui-nav-item"><button data-method="notice" id="dl" class="layui-btn" style=""  th:if="${session.admin eq null}" >登录</button></li>
+			<li class="layui-nav-item"><button data-method="notice" id="dl" class="layui-btn" style=""  th:if="${session.admin ne null}" th:text="${session.admin.UserLoginName}"></button></li>
+			<li class="layui-nav-item"><button data-method="register" id="reg" class="layui-btn" style="" th:if="${session.admin eq null}">注册</button></li>
+			<li class="layui-nav-item"><button data-method="register"  class="layui-btn" style="" th:if="${session.admin ne null}"><a th:href="@{'per?userLoginId='+${session.admin.userLoginId}}" >个人中心</a></button></li>
+		</ul>
+		<div id="box" style="display:none;" class="layui-anim layui-anim-up">
+			<div class="layui-form-item">
+				<label class="layui-form-label"><i class="layui-icon">&#xe66f;</i></label>
+				<div class="layui-input-block">
+					<input name="username" lay-verify="title" autocomplete="off" placeholder="请输入名称"  class="layui-input" id="lname" type="text">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label"><i class="layui-icon">&#xe673;</i></label>
+				<div class="layui-input-block">
+					<input name="password" placeholder="请输入密码" autocomplete="off" class="layui-input" type="password" id="lpwd">
+					<a href="javascript:void(0);" id="wjma" style="margin-left: -330px;font-size: 2px;color: red;">忘记密码</a>
+				</div>
+			</div>
+			<div>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type='button' id="log" value='登录' class="layui-btn layui-btn-radius layui-btn-normal" >
+
+
+			</div>
+		</div>
+
+		<!-- 忘记密码 -->
+		<div id="wj" style="display:none;">
+			<form class="layui-form" action="">
+				<div class="layui-form-item">
+					<label class="layui-form-label"><i class="layui-icon">&#xe678;</i></label>
+					<div class="layui-input-inline">
+						<input id="cphone1" name="cust.phone" lay-verify="required|phone" autocomplete="off" placeholder="请验证手机号" class="layui-input" type="tel">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label"><i class="layui-icon">&#xe673;</i></label>
+					<div class="layui-input-inline">
+						<input id="cpwd1" name="cust.cLPwd" lay-verify="pass" placeholder="请输入密码" autocomplete="off" class="layui-input" type="password">
+					</div>
+					<div class="layui-form-mid layui-word-aux">请填写6到12位密码</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label"><i class="layui-icon">&#xe673;</i></label>
+					<div class="layui-input-inline">
+						<input id="zpwd1" lay-verify="pass" placeholder="请再次输入密码" autocomplete="off" class="layui-input" type="password">
+					</div>
+					<div class="layui-form-mid layui-word-aux">注意俩次密码一致</div>
+				</div>
+				<input type='button' id="qrx" class="layui-btn layui-btn-lg layui-btn-normal" value='确认修改'  >
+			</form>
+		</div>
+		<!--注册-->
+		<div id="register" style="display:none;">
+			<form class="layui-form" action="">
+				<!-- 手机  -->
+				<div class="layui-form-item">
+					<label class="layui-form-label"><i class="layui-icon">&#xe678;</i></label>
+					<div class="layui-input-inline">
+						<input id="cphone" name="userTel" lay-verify="required|phone" autocomplete="off" placeholder="请输入手机号" class="layui-input" type="tel">
+					</div>
+				</div>
+				<!--  邮箱 -->
+				<div class="layui-form-item">
+					<label class="layui-form-label"><i class="layui-icon">&#xe675;</i></label>
+					<div class="layui-input-inline">
+						<input id="cemail" name="userEmail " lay-verify="email" autocomplete="off" placeholder="请输入邮箱" class="layui-input" type="text">
+					</div>
+				</div>
+				<!--     登录名 -->
+				<div class="layui-form-item">
+					<label class="layui-form-label"><i class="layui-icon">&#xe770;</i></label>
+					<div class="layui-input-inline">
+						<input id="cuname" name="userLoginName" lay-verify="identity" disabled  autocomplete="off" class="layui-input" type="text">
+					</div>
+				</div>
+				<!--  密码 -->
+				<div class="layui-form-item">
+					<label class="layui-form-label"><i class="layui-icon">&#xe673;</i></label>
+					<div class="layui-input-inline">
+						<input id="cpwd" name="userLoginPwd" lay-verify="pass" placeholder="请输入密码" autocomplete="off" class="layui-input" type="password">
+					</div>
+					<div class="layui-form-mid layui-word-aux">请填写6到12位密码</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label"><i class="layui-icon">&#xe673;</i></label>
+					<div class="layui-input-inline">
+						<input id="zpwd" lay-verify="pass" placeholder="请再次输入密码" autocomplete="off" class="layui-input" type="password">
+					</div>
+					<div class="layui-form-mid layui-word-aux">注意俩次密码一致</div>
+				</div>
+				<div>
+					<p></p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;<input type='button' id="regs" class="layui-btn layui-btn-lg layui-btn-normal" value='注册'  >
+				</div>
+			</form>
+		</div>
+		<form class="layui-form" action=""></form>
+		<div id="crumbs">
+			<span class="layui-breadcrumb" lay-separator="//">
+			  <a href="#">首页</a>
+			  <a><cite>课程</cite></a>
+			</span>
+		</div>
+		<div id="card">
+			<div class="layui-col-md12">
+		      <div class="layui-card">
+		        <div class="layui-card-body">
+			          按分类:
+			         <div class="lable">
+			          	<label><a href="#">全部</a></label>
+			       	 </div>
+			         <div class="lable">
+			         	<label><a href="#">微服务架构实现</a></label>
+			         </div>
+			         <div class="lable">
+			         	<label><a href="#">高并发与高可用</a></label>
+			         </div>
+			         
+			    </div>
+		         <div class="layui-card-body">
+			          按专业:
+			          <div class="lable">
+			          	<label><a href="#">全部</a></label>
+			       	 </div>
+			       	 <div class="lable">
+			          	<label><a href="#">付费</a></label>
+			       	 </div>
+			       	 <div class="lable">
+			          	<label><a href="#">免费</a></label>
+			       	 </div>
+		        </div>
+	      </div>
+	    </div>
+	</div>
+	<div class="layui-tab layui-tab-brief" id="bor" lay-filter="docDemoTabBrief">
+		  <ul class="layui-tab-title">
+		    <li class="layui-this">最新</li>
+		    <li>热度</li>
+		  </ul>
+		  <div class="layui-tab-content" style="height: 100px;">
+		    <div class="layui-tab-item layui-show">
+				<div class="layui-col-md3 layui-col-space5" style="border: 0px solid red; text-align: center;margin: auto; border-radius: 15px;" th:each="curr,cu:${curr}" >
+					<div>
+						<a href="#">
+							<img th:src="@{/images/upload/curriculum/{img}(img=${curr.curriculumImg})}" style="width: 260px; height: 200px;" align="center" />
+						</a>
+						<div>
+							<h2>
+								<a href="#">
+									<span th:text="${curr.curriculumName}"></span>
+								</a>
+							</h2>
+						</div>
+						<div>
+							<div class="tf" style="float: left; color: #5E5E5E;"><span th:text="'浏览量'+${curr.curriculumBrowse}"></span> </div>
+							<div class="hy" style="color: #00FF00;"><span th:if="${curr.curriculumMemberId eq 2}" th:text="免费"></span><span th:if="${curr.curriculumMemberId eq 1}" th:text="会员"></span></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		    <div class="layui-tab-item">
+		    	<div class="layui-col-md3 layui-col-space3" style="border: 0px solid red; text-align: center;margin: auto; border-radius: 15px;">
+					<div>
+						<a href="#">
+							<img src="img/3.jpg" style="width: 240px; height: 180px;" align="center" />
+						</a>
+						<div>
+							<h2>
+								<a href="#">
+									2019新版SpringBoot
+								</a>
+							</h2>
+						</div>
+						<div>
+							<div class="tf" style="float: left; color: #5E5E5E;">学习</div>
+							<div class="hy" style="color: #00FF00;">会员</div>
+						</div>
+					</div>
+				</div>
+		    </div>
+		  </div>
+		  <div id="page"></div>
+		  <div class="buttom">
+			<div style="float: left;">
+				<p>
+					<h2><a>友情链接</a></h2>
+				</p><br />
+				<br />
+				<p>
+					<h3><a href="#">java视频</a> <a href="#">每日论坛</a> <a href="#">粉丝群</a></h3>
+				</p>
+				<hr />
+				<h4><a>帮助中心</a>|<a>联系我们</a>|<a>关于我们</a>|&nbsp;&nbsp;客服：760736392&nbsp;&nbsp;&nbsp;Email:zgs_admin@163.com&nbsp;&nbsp;&nbsp;官方粉丝群：985599778</h4><br />
+				<h4>Copyright 2016-2019 AAA第一组版权所有 版本所有</h4>
+			</div>
+			
+		</div>
+	</div> 
+	</body>
+	
+</html>
+<script src="layui-v2.4.5/layui/layui.js" charset="utf-8">
+</script>
+<script src="js/userLogin.js"></script>
+
+<script type="text/javascript" src="js/curriculum.js"></script>

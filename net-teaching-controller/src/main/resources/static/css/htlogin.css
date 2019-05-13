@@ -1,0 +1,18 @@
+body{
+	background-image: url(../img/htloginbackground.jpg);
+	background-size:cover;
+}
+#login{
+	width:35%;
+	height: 300px;
+	background-color: #FDFEFE;
+	position: absolute;
+	left: 32%;
+	top:28%;
+}
+#loginspan{
+	margin-left:200px;
+	margin-top: 20px;
+	font-size: 25px;
+	
+}

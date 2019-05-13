@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zm.net.teaching.mapper.MailMapper">
+  <resultMap id="BaseResultMap" type="com.zm.net.teaching.domain.Mail">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="mail_id" jdbcType="INTEGER" property="mailId" />
+    <result column="mail_send_user_id" jdbcType="INTEGER" property="mailSendUserId" />
+    <result column="mail_Receive_user_id" jdbcType="INTEGER" property="mailReceiveUserId" />
+    <result column="mail_content" jdbcType="VARCHAR" property="mailContent" />
+    <result column="mail_title" jdbcType="VARCHAR" property="mailTitle" />
+    <result column="mail_time" jdbcType="TIMESTAMP" property="mailTime" />
+    <result column="mail_type_id" jdbcType="INTEGER" property="mailTypeId" />
+  </resultMap>
+</mapper>

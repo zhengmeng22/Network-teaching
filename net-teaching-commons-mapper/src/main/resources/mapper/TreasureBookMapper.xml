@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+"-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zm.net.teaching.commons.mapper.HtTreasureBook">
+	<insert id="addtreasurebook" parameterType="com.zm.net.teaching.domain.TreasureBook">
+		insert into treasure_book (user_login_id,labels_id,book_question,book_answer) values(user_login_id=#{userLoginId},labels_id=#{labelsId},book_question=#{bookQuestion},book_answer=#{bookAnswer})
+	</insert>
+	<select id="getinfo" resultType="Map" parameterType="com.zm.net.teaching.domain.TreasureBook">
+		select t.book_id,u.user_login_name,t.book_question,l.labels_name,t.book_Release_time from treasure_book t LEFT JOIN user_login u on t.user_login_id=u.user_login_id LEFT JOIN labels l on l.labels_id=t.labels_id
+		<where>
+			<if test="labelsId!=0 and labelsId!=null">
+				and labels_id=#{labelsId}
+			</if>
+		</where>
+	</select>
+	<delete id="deltreasurebook" parameterType="int">
+		delete from treasure_book where book_id=#{id}
+	</delete>
+	<select id="getlabel" resultType="com.zm.net.teaching.domain.Labels">
+		select * from labels
+	</select>
+</mapper>

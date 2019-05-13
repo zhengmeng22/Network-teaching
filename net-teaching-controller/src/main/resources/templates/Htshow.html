@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<link rel="stylesheet" th:href="@{/layui-v2.4.5/layui/css/layui.css}" />
+	<script th:src="@{/layui-v2.4.5/layui/layui.all.js}"></script>
+	<script th:src="@{/layui-v2.4.5/layui/layui.js}"></script>
+	<script th:src="@{/js/jquery-1.12.4.min.1.js}"></script>
+	<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>AAA教育后台</title>
+  <script type="text/javascript">
+ 	 function temp(a){
+		 if(a==1){
+			 $("#mainbody").html("<iframe scrolling='no'  frameborder='0' src='infos' width='100%' height='100%' ></iframe>");
+		 }
+		 if(a==2){
+			 $("#mainbody").html("<iframe scrolling='no'  frameborder='0' src='infos' width='100%' height='100%' ></iframe>");
+		 }
+		 if(a==3){
+			 $("#mainbody").html("<iframe scrolling='no'  frameborder='0' src='addinfos' width='100%' height='100%' ></iframe>");
+		 }
+		 if(a==4){
+			 $("#mainbody").html("<iframe scrolling='no'  frameborder='0' src='Treasureinfos' width='100%' height='100%' ></iframe>");
+		 }
+		 if(a==5){
+			 $("#mainbody").html("<iframe scrolling='no'  frameborder='0' src='infos' width='100%' height='100%' ></iframe>");
+		 }
+		 if(a==6){
+			 $("#mainbody").html("<iframe scrolling='no'  frameborder='0' src='infos' width='100%' height='100%' ></iframe>");
+		 }
+		 if(a==7){
+			 $("#mainbody").html("<iframe scrolling='no'  frameborder='0' src='infos' width='100%' height='100%' ></iframe>");
+		 }
+	}
+  	 
+  </script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo">AAA在线教育后台管理</div>
+    
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item">
+        <a href="javascript:;" >
+          <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+         <span th:text="${session.users.userLoginName}"></span>
+        </a>
+        <dl class="layui-nav-child">
+          <dd><a href="javascript:;" onclick="javascript:temp(7);">注册新的管理</a></dd>
+          
+        </dl>
+      </li>
+      <li class="layui-nav-item"><a href="remove">注销</a></li>
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="javascript:;">推送</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;" onclick="javascript:temp(1);">轮播推送</a></dd>
+            <dd><a href="javascript:;" onclick="javascript:temp(2);">系统公告</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">面试宝典</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;" onclick="javascript:temp(3);">宝典发布</a></dd>
+            <dd><a href="javascript:;" onclick="javascript:temp(4);">管理宝典</a></dd>
+           
+          </dl>
+        </li>
+        <li class="layui-nav-item"><a href="javascript:;" onclick="javascript:temp(5);">教师审核</a></li>
+        <li class="layui-nav-item"><a href="javascript:;" onclick="javascript:temp(6);">用户管理</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body">
+    <!-- 内容主体区域 -->
+    <div style="padding: 15px;widht:800px;height:480px;" id="mainbody">内容主体区域
+    
+    </div>
+    
+    
+  </div>
+  
+  <div class="layui-footer">
+  
+  </div>
+</div>
+<script>
+//JavaScript代码区域
+layui.use('element', function(){
+  var element = layui.element;
+  
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/layui-v2.4.5/layui/css/layui.css"/>
+<script src="/layui-v2.4.5/layui/layui.js"></script>
+<script src="/js/jquery-1.12.4.min.1.js"></script>
+<script type="text/javascript" src="/js/luntuan.js"></script>
+<link rel="stylesheet" href="/css/luntan.css">
+<script type="text/javascript" src="js/userLogin.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <title>面试宝典详情</title>
+</head>
+<body>
+<div class="container">
+
+    <div class="top">
+        <ul class="layui-nav layui-bg-green" lay-filter="">
+            <li class="layui-nav-item" id="tuo">
+                <a href=""><img th:src="@{/img/logo.png}"/></a>
+            </li>
+            <li class="layui-nav-item"><a href="/curr">课程</a></li>
+            <li class="layui-nav-item"><a href="/home">首页</a></li>
+            <li class="layui-nav-item"><a href="">会员</a></li>
+            <li class="layui-nav-item"><a href="">路线</a></li>
+            <li class="layui-nav-item">
+            </li>
+            <li class="layui-nav-item" id="t"></li>
+            <li class="layui-nav-item"><a href=""></a></li>
+            <li class="layui-nav-item"><a href=""></a></li>
+            <li class="layui-nav-item"><a href=""></a></li>
+            <li class="layui-nav-item"><a href=""></a></li>
+            <li class="layui-nav-item"><a href=""></a></li>
+            <li class="layui-nav-item"><button data-method="notice" id="dl" class="layui-btn" style=""  th:if="${session.admin eq null}" >登录</button></li>
+            <li class="layui-nav-item"><button data-method="notice" id="dl" class="layui-btn" style=""  th:if="${session.admin ne null}" th:text="${session.admin.UserLoginName}"></button></li>
+            <li class="layui-nav-item"><button data-method="register" id="reg" class="layui-btn" style="" th:if="${session.admin eq null}">注册</button></li>
+            <li class="layui-nav-item"><button data-method="register"  class="layui-btn" style="" th:if="${session.admin ne null}"><a th:href="@{'per?userLoginId='+${session.admin.userLoginId}}" >个人中心</a></button></li>
+        </ul>
+    </div>
+
+    <div class="main">
+        <div id="left">
+            <span id="zhi"><h1 id="topzhun" th:text="${book.bookQuestion}"></h1></span>
+            <table>
+                <tr>
+                    <td><h2>&nbsp;&nbsp;问:&nbsp;</h2>
+                        <h2 th:text="${book.bookQuestion}"></h2></td>
+                </tr>
+                <tr>
+                    <td><h2>&nbsp;&nbsp;回答:</h2></td>
+                </tr>
+                <tr>
+                    <td>
+                        &nbsp;&nbsp;<h2 th:text="${book.bookAnswer}">1.利用全球唯一UUID生成全局ID，不占用宽带</h2>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+    <div class="right">
+        <th id="chow"><h1>温馨通道</h1></th>
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+
+        </fieldset>
+        <ul>
+            <li>
+                <a href="#">一张图看完每特教育培训后薪资涨幅高达1万元</a>
+            </li>
+            <li>
+                <a href="#">腾讯课堂入驻最年轻的97后Java架构师,年收入几百万元</a>
+            </li>
+            <li>
+                <a href="#">创办在线教育网站，估值上亿元，拒绝多家风投千万元融资</a>
+            </li>
+            <li>
+                <a href="#">每特教育官方SpringCloud微服务视频教程破百万人学习</a>
+            </li>
+            <li>
+                <a href="#">97后互联网架构师腾讯课堂分享Java架构成精之路</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="fly-panel">
+        <img th:src="@{/img/gh_221e70ca53fb_258.jpg}" style="margin-left: 90px;"/>
+        <p style="position: relative; margin-left: 130px; color: #666;">微信扫码关注 蚂蚁课堂 公众号</p>
+    </div>
+
+    <div class="fly-panel1">
+        <img th:src="@{/img/1513928038043.jpg}" style="margin-left: 90px;"/>
+        <p style="position: relative; margin-left: 130px; color: #666;">微信扫码关注 蚂蚁课堂 公众号</p>
+    </div>
+
+    <div class="Friendship-link">
+        <div class="layui-card-header">友情连接</div>
+        <div class="layui-card-body">
+            <table>
+                <tr>
+                    <td>
+                        <a href="/home">AAA课堂&nbsp;&nbsp;</a>
+                        <a href="#">腾讯课堂&nbsp;&nbsp;</a>
+                        <a href="#">媒体报道&nbsp;&nbsp;</a>
+                        <a href="#">粉丝群</a>
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+</div>
+<div id="box" style="display:none;" class="layui-anim layui-anim-up">
+    <div class="layui-form-item">
+        <label class="layui-form-label"><i class="layui-icon">&#xe66f;</i></label>
+        <div class="layui-input-block">
+            <input name="username" lay-verify="title" autocomplete="off" placeholder="请输入名称" class="layui-input"
+                   id="lname" type="text">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"><i class="layui-icon">&#xe673;</i></label>
+        <div class="layui-input-block">
+            <input name="password" placeholder="请输入密码" autocomplete="off" class="layui-input" type="password" id="lpwd">
+            <a href="javascript:void(0);" id="wjma" style="margin-left: -330px;font-size: 2px;color: red;">忘记密码</a>
+        </div>
+    </div>
+    <div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type='button' id="log" value='登录' class="layui-btn layui-btn-radius layui-btn-normal">
+
+
+    </div>
+</div>
+
+<!-- 忘记密码 -->
+<div id="wj" style="display:none;">
+    <form class="layui-form" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon">&#xe678;</i></label>
+            <div class="layui-input-inline">
+                <input id="cphone1" name="cust.phone" lay-verify="required|phone" autocomplete="off"
+                       placeholder="请验证手机号" class="layui-input" type="tel">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon">&#xe673;</i></label>
+            <div class="layui-input-inline">
+                <input id="cpwd1" name="cust.cLPwd" lay-verify="pass" placeholder="请输入密码" autocomplete="off"
+                       class="layui-input" type="password">
+            </div>
+            <div class="layui-form-mid layui-word-aux">请填写6到12位密码</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon">&#xe673;</i></label>
+            <div class="layui-input-inline">
+                <input id="zpwd1" lay-verify="pass" placeholder="请再次输入密码" autocomplete="off" class="layui-input"
+                       type="password">
+            </div>
+            <div class="layui-form-mid layui-word-aux">注意俩次密码一致</div>
+        </div>
+        <input type='button' id="qrx" class="layui-btn layui-btn-lg layui-btn-normal" value='确认修改'>
+    </form>
+</div>
+<!--注册-->
+<div id="register" style="display:none;">
+    <form class="layui-form" action="">
+        <!-- 手机  -->
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon">&#xe678;</i></label>
+            <div class="layui-input-inline">
+                <input id="cphone" name="userTel" lay-verify="required|phone" autocomplete="off" placeholder="请输入手机号"
+                       class="layui-input" type="tel">
+            </div>
+        </div>
+        <!--  邮箱 -->
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon">&#xe675;</i></label>
+            <div class="layui-input-inline">
+                <input id="cemail" name="userEmail " lay-verify="email" autocomplete="off" placeholder="请输入邮箱"
+                       class="layui-input" type="text">
+            </div>
+        </div>
+        <!--     登录名 -->
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon">&#xe770;</i></label>
+            <div class="layui-input-inline">
+                <input id="cuname" name="userLoginName" lay-verify="identity" disabled autocomplete="off"
+                       class="layui-input" type="text">
+            </div>
+        </div>
+        <!--  密码 -->
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon">&#xe673;</i></label>
+            <div class="layui-input-inline">
+                <input id="cpwd" name="userLoginPwd" lay-verify="pass" placeholder="请输入密码" autocomplete="off"
+                       class="layui-input" type="password">
+            </div>
+            <div class="layui-form-mid layui-word-aux">请填写6到12位密码</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><i class="layui-icon">&#xe673;</i></label>
+            <div class="layui-input-inline">
+                <input id="zpwd" lay-verify="pass" placeholder="请再次输入密码" autocomplete="off" class="layui-input"
+                       type="password">
+            </div>
+            <div class="layui-form-mid layui-word-aux">注意俩次密码一致</div>
+        </div>
+        <div>
+            <p></p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;<input type='button' id="regs" class="layui-btn layui-btn-lg layui-btn-normal"
+                                           value='注册'>
+        </div>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>后台登陆</title>
+		<link rel="stylesheet" th:href="@{/layui-v2.4.5/layui/css/layui.css}" />
+		<script th:src="@{/layui-v2.4.5/layui/layui.all.js}"></script>
+ 		<link rel="stylesheet" th:href="@{/css/htlogin.css}" />
+	</head> 
+	<body>
+		<div id="login">
+			<span id="loginspan">登陆</span>
+			<form class="layui-form" action="Htlogin" method="post" style="margin-top: 30px;">
+				  <div class="layui-form-item">
+				    <label class="layui-form-label">用户名:</label>
+				    <div class="layui-input-block">
+				      <input name="userLoginName" class="layui-input" type="text" placeholder="请输入用户名" style="width: 280px;"  lay-verify="required">
+				    </div>
+				  </div>
+				  <div class="layui-form-item">
+				    <label class="layui-form-label">密码:</label>
+				    <div class="layui-input-block">
+				      <input name="userLoginPwd" class="layui-input" type="password" placeholder="请输入密码" style="width: 280px;"  lay-verify="required">
+				 	</div>
+				 </div>
+				 <div class="layui-form-item">
+				    <div class="layui-input-block">
+				      <button class="layui-btn" lay-filter="demo1" lay-submit="">登陆</button>
+				      
+				    </div>
+ 				 </div>
+
+   			</form>
+		</div>
+	</body>
+</html>

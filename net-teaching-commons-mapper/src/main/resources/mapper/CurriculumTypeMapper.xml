@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zm.net.teaching.commons.mapper.CurriculumTypeMapper">
+  <resultMap id="BaseResultMap" type="com.zm.net.teaching.domain.CurriculumType">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="curriculum_id" jdbcType="INTEGER" property="curriculumId" />
+    <result column="curriculum_name" jdbcType="VARCHAR" property="curriculumName" />
+  </resultMap>
+</mapper>

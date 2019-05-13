@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zm.net.teaching.mapper.UserCommentMapper">
+  <resultMap id="BaseResultMap" type="com.zm.net.teaching.domain.UserComment">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="user_comment_id" jdbcType="INTEGER" property="userCommentId" />
+    <result column="user_comment_login_id" jdbcType="INTEGER" property="userCommentLoginId" />
+    <result column="user_comment_total_id" jdbcType="INTEGER" property="userCommentTotalId" />
+    <result column="user_comment_content" jdbcType="VARCHAR" property="userCommentContent" />
+    <result column="user_comment_time" jdbcType="TIMESTAMP" property="userCommentTime" />
+  </resultMap>
+</mapper>

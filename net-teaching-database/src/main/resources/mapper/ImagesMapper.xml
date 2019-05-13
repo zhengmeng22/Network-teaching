@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zm.net.teaching.mapper.ImagesMapper">
+  <resultMap id="BaseResultMap" type="com.zm.net.teaching.domain.Images">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="images_id" jdbcType="INTEGER" property="imagesId" />
+    <result column="images_url" jdbcType="VARCHAR" property="imagesUrl" />
+    <result column="images_link" jdbcType="VARCHAR" property="imagesLink" />
+    <result column="images_text" jdbcType="VARCHAR" property="imagesText" />
+    <result column="images_index" jdbcType="INTEGER" property="imagesIndex" />
+    <result column="images_show" jdbcType="BIT" property="imagesShow" />
+  </resultMap>
+</mapper>
